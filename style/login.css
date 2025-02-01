@@ -1,0 +1,185 @@
+/* Global Style */
+body {
+    background: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px; /* Tambahkan padding untuk layar kecil */
+}
+
+/* Container */
+.container {
+    text-align: center;
+}
+
+/* Heading */
+h1 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+/* Form Style */
+form {
+    background: rgb(20, 20, 20);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid #a160ff;
+    animation: rotate-border 3s linear infinite;
+    padding: 2rem;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    color: #fff;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* Form Labels */
+form label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #e0e0e0;
+}
+
+/* Form Inputs */
+form input {
+    width: calc(100% - 2px);
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #a160ff;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background: rgba(12, 12, 12, 0.2);
+    color: #fff;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    animation: rotate-border 3s linear infinite;
+}
+
+form input::placeholder {
+    color: #b0b0b0;
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+form input:focus::placeholder {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+/* Form Button */
+form button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background: #a160ff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background: rgb(59, 45, 122);
+}
+
+/* Overlay Style */
+
+/* Animasi Border */
+@keyframes rotate-border {
+    0% {
+        border-color: #b398d8;
+    }
+    25% {
+        border-color: #a160ff;
+    }
+    50% {
+        border-color: #ffffff;
+    }
+    75% {
+        border-color: #a160ff;
+    }
+    100% {
+        border-color: #b398d8;
+    }
+}
+
+/* Animasi Fade-In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Awal elemen */
+.fade-in-target {
+    opacity: 0; /* Transparan di awal */
+    transform: translateY(20px); /* Geser sedikit ke bawah */
+}
+
+/* Kelas untuk animasi */
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Responsiveness */
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 1.5rem;
+        max-width: 350px;
+    }
+
+    form input {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    form button {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding: 1rem;
+        max-width: 300px;
+    }
+
+    form input {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    form button {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+}

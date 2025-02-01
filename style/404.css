@@ -1,0 +1,94 @@
+::selection{
+    background-color:#a160ff;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    position: relative;
+}
+
+img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    z-index: 1;
+    color: #fff; /* Warna teks putih agar kontras dengan gambar */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Tambahkan bayangan untuk keterbacaan */
+}
+
+.lost-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-shadow: none;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+span {
+    color: red;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Awal elemen */
+.fade-in-target {
+    opacity: 0; /* Transparan di awal */
+    transform: translateY(20px); /* Geser sedikit ke bawah */
+}
+
+/* Kelas untuk animasi */
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}

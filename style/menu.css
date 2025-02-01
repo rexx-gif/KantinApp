@@ -1,0 +1,317 @@
+* {
+    scrollbar-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: #a160ff; 
+    color: #000000;
+    text-shadow: none; 
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0d0d0d;
+    color: #ffffff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    background-color: rgba(13, 13, 13, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #a160ff;
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #a160ff;
+}
+
+.menu-icon a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.dropbtn:hover {
+    color: #a160ff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(13, 13, 13, 0.9);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    min-width: 180px;
+    border: 1px solid #a160ff;
+    border-radius: 8px;
+    backdrop-filter: blur(6px);
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #a160ff;
+    color: #0d0d0d;
+    border-radius: 8px;
+    animation: rotate-border 3s linear infinite;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.section-title {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 32px;
+    color: #a160ff;
+    font-weight: bold;
+}
+
+.list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+}
+
+.list-card {
+    background-color: rgba(18, 18, 18, 0.85); 
+    border: 2px solid #a160ff;
+    border-radius: 10px;
+    padding: 28px;
+    width: 480px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, filter 0.3s, opacity 0.3s;
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 1;
+}
+
+.list-card:hover {
+    transform: scale(1.1);
+    z-index: 2;
+    border: 2px solid #504b47;
+    animation: rotate-border 3s linear infinite;
+}
+
+@keyframes rotate-border {
+    0% {
+        border-color: #504b47;
+    }
+    25% {
+        border-color: #a160ff; 
+    }
+    50% {
+        border-color: #ffffff; 
+    }
+    75% {
+        border-color: #a160ff;
+    }
+    100% {
+        border-color: #504b47;
+    }
+}
+
+.list-container:hover .list-card:not(:hover)  {
+    filter: blur(5px);
+    opacity: 0.6;
+}
+
+.nama_makanan {
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+.nama_makanan:hover {
+    opacity: 1;
+}
+
+.description {
+    font-size: 16px;
+    margin: 15px 0;
+    color: #d3d3d3;
+    line-height: 1.6;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #a160ff;
+}
+
+.list-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.list-actions a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.delete-btn {
+    background-color: rgba(230, 76, 60, 0.8); 
+}
+
+.delete-btn:hover {
+    background-color: rgba(192, 59, 43, 0.8); 
+}
+
+.update-btn {
+    background-color: #a160ff;
+}
+
+.add-btn {
+    background-color: #a160ff;
+}
+
+.add-btn:hover{
+    background-color: #8242cc;
+}
+
+.update-btn:hover {
+    background-color: #8242cc;
+}
+
+.buy-btn {
+    background-color: rgb(120, 63, 199);
+}
+
+.buy-btn:hover {
+    background-color: rgb(65, 23, 124);
+}
+
+/* Media Query untuk Tablet (Max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .logo img {
+        max-width: 80px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-top: 20px;
+    }
+
+    .list-container {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .list-card {
+        width: 100%; /* Lebar penuh pada layar tablet */
+    }
+}
+
+/* Media Query untuk Ponsel (Max-width: 480px) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .logo img {
+        max-width: 60px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .list-container {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .list-card {
+        padding: 20px;
+        width: 100%; /* Lebar penuh pada layar kecil */
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .price {
+        font-size: 18px;
+    }
+
+    .list-actions a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+

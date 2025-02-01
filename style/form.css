@@ -1,0 +1,267 @@
+/* Global Style */
+* {
+    scrollbar-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: #a160ff; 
+    color: #000000;
+    text-shadow: none; 
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0d0d0d;
+    color: #ffffff;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    background-color: rgba(13, 13, 13, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #a160ff;
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #a160ff;
+}
+
+.menu-icon a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.dropbtn:hover {
+    color: #a160ff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(13, 13, 13, 0.9);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    min-width: 180px;
+    border: 1px solid #a160ff;
+    border-radius: 8px;
+    backdrop-filter: blur(6px);
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #a160ff;
+    color: #0d0d0d;
+    border-radius: 8px;
+    animation: rotate-border 3s linear infinite;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Form */
+form {
+    background: rgb(20, 20, 20);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid #a160ff;
+    animation: rotate-border 3s linear infinite;
+    padding: 2rem;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    color: #fff;
+    margin: 2rem auto; 
+}
+
+form h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+form label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #e0e0e0;
+}
+
+form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #a160ff;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    background: rgba(12, 12, 12, 0.2);
+    color: #fff;
+}
+
+form input:focus {
+    animation: rotate-border 3s linear infinite;
+}
+
+form input::placeholder {
+    color: #b0b0b0;
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+form input:focus::placeholder {
+    transform: translateX(-100%); 
+    opacity: 0; 
+}
+
+form button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background: #a160ff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button{
+    padding: 20px;
+}
+
+
+form button:hover {
+    background: rgb(59, 45, 122);
+}
+
+/* Keyframes */
+@keyframes rotate-border {
+    0% {
+        border-color: #b398d8;
+    }
+    25% {
+        border-color: #a160ff; 
+    }
+    50% {
+        border-color: #ffffff; 
+    }
+    75% {
+        border-color: #a160ff;
+    }
+    100% {
+        border-color: #b398d8;
+    }
+}
+
+/* Responsiveness */
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    form {
+        max-width: 350px;
+    }
+
+    form h1 {
+        font-size: 1.6rem;
+    }
+
+    form input, form button {
+        padding: 0.7rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 16px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    form {
+        max-width: 300px;
+        padding: 1.5rem;
+    }
+
+    form h1 {
+        font-size: 1.4rem;
+    }
+
+    form input, form button {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+}
+
+
