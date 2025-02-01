@@ -76,12 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <!-- Tampilkan error jika ada -->
-<?php if (isset($_SESSION['error'])): ?>
-    <div class="alert alert-danger text-center">
-        <?= $_SESSION['error']; ?>
-    </div>
-    <?php unset($_SESSION['error']); ?>
-<?php endif; ?>
+
 
 <div class="container fade-in-target">
     <h1>Silahkan Mengisi Form X-Kantin</h1>
@@ -94,6 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <button type="submit" class="fade-in-target">Login</button>
     </form>
+    <br>
+    <?php if (isset($_SESSION['error'])): ?>
+    <div class="alert alert-danger text-center">
+        <?= $_SESSION['error']; ?>
+    </div>
+    <?php unset($_SESSION['error']); ?>
+<?php endif; ?>
     <br>
     <p class="note"><span class="note" style="color:red;">Note</span> Pelanggan : Pelanggan boleh pakai password apa saja.</p>
     <p class="note"><span class="note" style="color:red;">Note</span> Admin : Wajib pakai password yg sudah disediakan</p>
