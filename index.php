@@ -81,7 +81,7 @@ if ($is_guest) {
     </div>
 
     <!-- Modal untuk Login (Hanya 1, Tidak Duplikat) -->
-    < class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-dark">
                 <div class="modal-header text-light">
