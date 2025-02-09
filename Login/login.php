@@ -1,43 +1,72 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+$conn = new mysqli("localhost", "root", "", "kantin");
+
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
 
 // Ambil pesan logout jika ada
 $logoutMessage = isset($_SESSION['logout_status']) ? $_SESSION['logout_status'] : "";
-
-// Hapus session logout_status setelah ditampilkan
 unset($_SESSION['logout_status']);
 
-// Daftar pengguna admin
+// Daftar akun Admin dan Guru
 $admin_users = [
     'rafi' => 'rawr',
-    'ebin' => 'rexx123',
+    'Ebin' => 'rexxrawr12345',
 ];
 
-// Ambil data dari form login
+$guru_users = [
+    'Pak Abdi' => 'GuruRPL',
+    'Pak Nut' => 'GuruRPL',
+    'Pak Hendra' => 'GuruRPL',
+    'Pak Iqbal' => 'GuruRPL',
+];
+
 $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
+$role = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($admin_users[$username]) && $admin_users[$username] === $password) {
-        // Login sebagai admin
         $_SESSION['user'] = $username;
         $_SESSION['role'] = 'Admin';
-        header('Location: ../index.php');
-        exit;
-    } elseif (!empty($username) && !isset($admin_users[$username])) {
-        // Login sebagai pelanggan
+        $role = 'Admin';
+    } elseif (isset($guru_users[$username]) && $guru_users[$username] === $password) {
+        $_SESSION['user'] = $username;
+        $_SESSION['role'] = 'Guru RPL';
+        $role = 'Guru RPL';
+    } elseif (!empty($username) && !isset($admin_users[$username]) && !isset($guru_users[$username])) {
         $_SESSION['user'] = $username;
         $_SESSION['role'] = 'Pelanggan';
-        header('Location: ../menu.php');
-        exit;
+        $role = 'Pelanggan';
     } else {
-        // Gagal login
         $_SESSION['error'] = "Username atau password salah. Silakan coba lagi.";
         header('Location: login.php');
         exit;
     }
+
+    // Simpan atau update user di database
+    $stmt = $conn->prepare("INSERT INTO users (username, role, last_login) VALUES (?, ?, NOW()) 
+                            ON DUPLICATE KEY UPDATE role = VALUES(role), last_login = NOW()");
+    $stmt->bind_param("ss", $username, $role);
+    $stmt->execute();
+    $stmt->close();
+
+    // Redirect berdasarkan role
+    if ($role == 'Admin' || $role == 'Guru RPL') {
+        header('Location: ../index.php');
+    } elseif ($role == 'Pelanggan') {
+        header('Location: ../menu.php');
+    }
+    exit;
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -50,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="../style/Login.css">
+    <link rel="stylesheet" href="../style/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../image/LogoX-Kantin.png" type="image/x-icon">
@@ -69,15 +98,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?= htmlspecialchars($logoutMessage, ENT_QUOTES, 'UTF-8'); ?>
             </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-success w-50" data-bs-dismiss="modal">OK</button>
+                <button type="button" class="btn w-50" style="background-color: #6f42c1; color: white; border-color: #6f42c1;" data-bs-dismiss="modal">OK</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Tampilkan error jika ada -->
-
-
 <div class="container fade-in-target">
     <h1>Silahkan Mengisi Form X-Kantin</h1>
     <form method="POST" class="fade-in-target">

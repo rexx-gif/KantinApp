@@ -84,8 +84,9 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : 'guest';
 
 $is_admin = $_SESSION['role'] == 'Admin';
 $is_pelanggan = $_SESSION['role'] == 'Pelanggan';
+$is_guru = $_SESSION['role'] == 'Guru RPL';
 
-if ($is_admin) {
+if ($is_admin || $is_guru) {
     $message = "Selamat datang, " . htmlspecialchars($role) . " " . htmlspecialchars($username) . " Yang Tercinta di X-Kantin!";
 }elseif($is_pelanggan){
     $message = "Selamat datang, ". htmlspecialchars("($role)") ." ". htmlspecialchars($username). " Tercinta di X-Kantin!";
@@ -156,15 +157,15 @@ if (!isset($_SESSION['user'])) {
                 <p class="description"><?php echo $row_makanan['deskripsi']; ?></p>
                 <p class="price">Rp <?= number_format($row_makanan['harga'], 0, ',', '.'); ?></p>
                 <div class="list-actions">
-                    <?php if ($is_admin) { ?>
+                    <?php if ($is_admin || $is_guru) { ?>
                         <!-- Admin can delete, update and buy -->
                         <a href="CUD/delete_makanan.php?id=<?php echo $row_makanan['id']; ?>" class="delete-btn">Delete</a>
                         <a href="CUD/update_makanan.php?id=<?php echo $row_makanan['id']; ?>" class="update-btn">Update</a>
                         <a href="CUD/tambah_makanan.php" class="add-btn">Add Menu</a>
                     <?php } ?>
                     <!-- Both Admin and Pelanggan can buy -->
-                    <a href="order.php" class="buy-btn">Buy Now</a>
-                </div>
+                    <a href="order.php?id_makanan=<?php echo $row_makanan['id']; ?>" class="buy-btn">Buy Now</a>
+                    </div>
             </div>
         <?php } ?>
     </div>
@@ -182,15 +183,15 @@ if (!isset($_SESSION['user'])) {
                 <p class="description"><?php echo $row_minuman['deskripsi']; ?></p>
                 <p class="price">Rp <?= number_format($row_minuman['harga'], 0, ',', '.'); ?></p>
                 <div class="list-actions">
-                    <?php if ($is_admin) { ?>
+                    <?php if ($is_admin || $is_guru) { ?>
                         <!-- Admin can delete, update and buy -->
                         <a href="CUD/delete_minuman.php?id=<?php echo $row_minuman['id']; ?>" class="delete-btn">Delete</a>
                         <a href="CUD/update_minuman.php?id=<?php echo $row_minuman['id']; ?>" class="update-btn">Update</a>
                         <a href="CUD/tambah_minuman.php" class="add-btn">Add Menu</a>
                     <?php } ?>
                     <!-- Both Admin and Pelanggan can buy -->
-                    <a href="order.php" class="buy-btn">Buy Now</a>
-                </div>
+                    <a href="order.php?id_minuman=<?php echo $row_minuman['id']; ?>" class="buy-btn">Buy Now</a>
+                    </div>
             </div>
         <?php } ?>
     </div>
